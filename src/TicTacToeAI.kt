@@ -1,3 +1,5 @@
+import java.util.*
+
 /**
  * Created by Abhinav on 26/10/17.
  */
@@ -28,7 +30,12 @@ class TicTacToeAI {
                 if (ticTacToe.validatePosition(inputPosition)) {
                     ticTacToe.fillUserInput(inputPosition)
                     if (!ticTacToe.validateWinner()) {
-                        ticTacToe.printCurrentBoard()
+                        if (ticTacToe.isEmptySpaceAvailable()) {
+                            ticTacToe.putAIInput()
+                        } else {
+                            ticTacToe.continueGame = false
+                            println("Game Draw")
+                        }
                     } else {
                         println("You Won!")
                         ticTacToe.printCurrentBoard()
@@ -38,6 +45,59 @@ class TicTacToeAI {
             }
 
         }
+    }
+
+    private fun putAIInput() {
+        var flag = false
+        outerLoop@ for (i in 0..2) {
+            for (j in 0..2) {
+                if (board[i][j] == "") {
+                    when {
+                        isWinningInput(i, j) -> {
+                            board[i][j] = O
+                            flag = true
+                            break@outerLoop
+                        }
+                        isBlockingInput(i, j) -> {
+                            board[i][j] = O
+                            flag = true
+                            break@outerLoop
+                        }
+                    }
+                }
+            }
+        }
+
+        if (!flag)
+            putRandomAIInput()
+    }
+
+    private fun putRandomAIInput() {
+        val random = Random()
+        outer@ while (true) {
+            val randomPosition = random.nextInt(8) + 1
+            when {
+                validatePosition(randomPosition) -> {
+                    fillInputAtPosition(randomPosition, O)
+                    break@outer
+                }
+            }
+        }
+    }
+
+    private fun isWinningInput(i: Int, j: Int): Boolean {
+        return false
+    }
+
+    private fun isBlockingInput(i: Int, j: Int): Boolean {
+        return false
+    }
+
+    private fun isEmptySpaceAvailable(): Boolean {
+        return (0..2)
+                .firstOrNull()
+                ?.let { board[it].contains("") }
+                ?: false
     }
 
     private fun printCurrentBoard() {
@@ -59,9 +119,13 @@ class TicTacToeAI {
     }
 
     private fun fillUserInput(inputPosition: Int) {
+        fillInputAtPosition(inputPosition, X)
+    }
+
+    private fun fillInputAtPosition(inputPosition: Int, symbol: String) {
         when {
-            inputPosition % 3 == 0 -> board[inputPosition / 3 - 1][2] = X
-            else -> board[inputPosition / 3][inputPosition % 3 - 1] = X
+            inputPosition % 3 == 0 -> board[inputPosition / 3 - 1][2] = symbol
+            else -> board[inputPosition / 3][inputPosition % 3 - 1] = symbol
         }
     }
 
