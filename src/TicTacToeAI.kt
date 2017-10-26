@@ -120,6 +120,9 @@ class TicTacToeAI {
     }
 
     private fun validateWinner(): Boolean {
+        /**
+         * array.contentToString() provides string representation of array items
+         * */
         return false
     }
 
