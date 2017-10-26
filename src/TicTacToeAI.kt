@@ -6,6 +6,8 @@ import java.util.*
 class TicTacToeAI {
     val X = "X"
     val O = "O"
+    val userWinArray = arrayOf(3, X)
+    val computerWinArray = arrayOf(3, O)
     var board = Array(3) { Array(3) { "" } }
     var continueGame = true
 
@@ -70,6 +72,12 @@ class TicTacToeAI {
 
         if (!flag)
             putRandomAIInput()
+        if (validateWinner()) {
+            println("Computer Won")
+            printCurrentBoard()
+            continueGame = false
+        } else
+            printCurrentBoard()
     }
 
     private fun putRandomAIInput() {
@@ -94,10 +102,7 @@ class TicTacToeAI {
     }
 
     private fun isEmptySpaceAvailable(): Boolean {
-        return (0..2)
-                .firstOrNull()
-                ?.let { board[it].contains("") }
-                ?: false
+        return (0..2).any { board[it].contains("") }
     }
 
     private fun printCurrentBoard() {
