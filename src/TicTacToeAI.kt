@@ -94,6 +94,42 @@ class TicTacToeAI {
     }
 
     private fun isWinningInput(i: Int, j: Int): Boolean {
+        when (i) {
+            0 -> {
+                when (j) {
+                    0 -> return (1..2).all { board[it][it] == O }
+                            || (1..2).all { board[0][it] == O }
+                            || (1..2).all { board[it][0] == O }
+                    1 -> return (0..2).step(2).all { board[0][it] == O }
+                            || (1..2).all { board[it][1] == O }
+                    2 -> return (0..1).step(2).all { board[0][it] == O }
+                            || (1..2).all { board[it][2] == O }
+                }
+            }
+            1 -> {
+                when (j) {
+                    0 -> return (1..2).all { board[1][it] == O }
+                            || (0..2).step(2).all { board[it][0] == O }
+                    1 -> return (0..2).step(2).all { board[it][it] == O }
+                            || (0..2).step(2).all { board[1][it] == O }
+                            || (0..2).step(2).all { board[it][1] == O }
+                            || (board[0][2] == O && board[2][0] == O)
+                    2 -> return (0..2).step(2).all { board[it][2] == O }
+                            || (0..1).all { board[1][it] == O }
+                }
+            }
+            2 -> {
+                when (j) {
+                    0 -> return (1..2).all { board[2][it] == O }
+                            || (0..1).all { board[it][0] == O }
+                    1 -> return (0..2).step(2).all { board[2][it] == O }
+                            || (0..1).all { board[it][1] == O }
+                    2 -> return (0..1).all { board[it][it] == O }
+                            || (0..1).all { board[2][it] == O }
+                            || (0..1).all { board[it][2] == O }
+                }
+            }
+        }
         return false
     }
 
@@ -142,7 +178,6 @@ class TicTacToeAI {
                 arr[j] = board[j][i]
             }
             if (arr.contentEquals(userWinArray) || arr.contentEquals(computerWinArray)) {
-//                print("Vertical check ${arr.contentToString()} for i value $i")
                 return true
             }
         }
