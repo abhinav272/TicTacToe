@@ -6,8 +6,8 @@ import java.util.*
 class TicTacToeAI {
     val X = "X"
     val O = "O"
-    val userWinArray = arrayOf(3, X)
-    val computerWinArray = arrayOf(3, O)
+    val userWinArray = arrayOf(X, X, X)
+    val computerWinArray = arrayOf(O, O, O)
     var board = Array(3) { Array(3) { "" } }
     var continueGame = true
 
@@ -120,9 +120,32 @@ class TicTacToeAI {
     }
 
     private fun validateWinner(): Boolean {
-        /**
-         * array.contentToString() provides string representation of array items
-         * */
+        return (0..2).any {
+            board[it].contentEquals(userWinArray)
+                    || board[it].contentEquals(computerWinArray)
+        }
+                .or(checkVerticalWinning())
+                .or(checkDiagonalWinning())
+    }
+
+    private fun checkDiagonalWinning(): Boolean {
+        return (0..2).all { board[it][it] == X }
+                || (0..2).all { board[it][it] == O }
+                || (0..2).all { board[it][2 - it] == X }
+                || (0..2).all { board[it][2 - it] == O }
+    }
+
+    private fun checkVerticalWinning(): Boolean {
+        val arr = Array(3) { "" }
+        for (i in 0..2) {
+            for (j in 0..2) {
+                arr[j] = board[j][i]
+            }
+            if (arr.contentEquals(userWinArray) || arr.contentEquals(computerWinArray)) {
+//                print("Vertical check ${arr.contentToString()} for i value $i")
+                return true
+            }
+        }
         return false
     }
 

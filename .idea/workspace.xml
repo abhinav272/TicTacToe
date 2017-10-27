@@ -18,8 +18,8 @@
       <file leaf-file-name="TicTacToeAI.kt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TicTacToeAI.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="123" column="80" lean-forward="false" selection-start-line="123" selection-start-column="80" selection-end-line="123" selection-end-column="80" />
+            <state relative-caret-position="545">
+              <caret line="62" column="50" lean-forward="true" selection-start-line="62" selection-start-column="50" selection-end-line="62" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -252,27 +252,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/TicTacToeAI.kt</url>
-          <line>125</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="2" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$KOTLIN_BUNDLED$/lib/kotlin-stdlib-sources.jar!/generated/_Collections.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="1389" column="34" lean-forward="false" selection-start-line="1389" selection-start-column="34" selection-end-line="1389" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$KOTLIN_BUNDLED$/lib/kotlin-stdlib-sources.jar!/generated/_Arrays.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
@@ -281,10 +265,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$KOTLIN_BUNDLED$/lib/kotlin-stdlib-sources.jar!/kotlin/Library.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="40" column="45" lean-forward="false" selection-start-line="40" selection-start-column="45" selection-end-line="40" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$KOTLIN_BUNDLED$/lib/kotlin-stdlib-sources.jar!/generated/_Collections.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="1372" column="34" lean-forward="false" selection-start-line="1372" selection-start-column="34" selection-end-line="1372" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/TicTacToeAI.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="123" column="80" lean-forward="false" selection-start-line="123" selection-start-column="80" selection-end-line="123" selection-end-column="80" />
+        <state relative-caret-position="545">
+          <caret line="62" column="50" lean-forward="true" selection-start-line="62" selection-start-column="50" selection-end-line="62" selection-end-column="50" />
           <folding />
         </state>
       </provider>
