@@ -51,20 +51,25 @@ class TicTacToeAI {
 
     private fun putAIInput() {
         var flag = false
-        outerLoop@ for (i in 0..2) {
+        winnerLoop@ for (i in 0..2) {
             for (j in 0..2) {
-                if (board[i][j] == "") {
-                    when {
-                        isWinningInput(i, j) -> {
-                            board[i][j] = O
-                            flag = true
-                            break@outerLoop
-                        }
-                        isBlockingInput(i, j) -> {
-                            board[i][j] = O
-                            flag = true
-                            break@outerLoop
-                        }
+                if (board[i][j] == "" && isWinningInput(i, j)) {
+                    println("winning input $i -- $j")
+                    board[i][j] = O
+                    flag = true
+                    break@winnerLoop
+                }
+            }
+        }
+
+        if (!flag) {
+            blockingLoop@ for (i in 0..2) {
+                for (j in 0..2) {
+                    if (board[i][j] == "" && isBlockingInput(i, j)) {
+                        println("blocking input $i -- $j")
+                        board[i][j] = O
+                        flag = true
+                        break@blockingLoop
                     }
                 }
             }
@@ -134,6 +139,43 @@ class TicTacToeAI {
     }
 
     private fun isBlockingInput(i: Int, j: Int): Boolean {
+        when (i) {
+            0 -> {
+                when (j) {
+                    0 -> return (1..2).all { board[it][it] == X }
+                            || (1..2).all { board[0][it] == X }
+                            || (1..2).all { board[it][0] == X }
+                    1 -> return (0..2).step(2).all { board[0][it] == X }
+                            || (1..2).all { board[it][1] == X }
+                    2 -> return (0..1).all { board[0][it] == X }
+                            || (1..2).all { board[it][2] == X }
+                }
+            }
+            1 -> {
+                when (j) {
+                    0 -> return (1..2).all { board[1][it] == X }
+                            || (0..2).step(2).all { board[it][0] == X }
+                    1 -> return (0..2).step(2).all { board[it][it] == X }
+                            || (0..2).step(2).all { board[it][1] == X }
+                            || (0..2).step(2).all { board[1][it] == X }
+                            || (board[0][2] == X && board[2][0] == X)
+                    2 -> return (0..2).step(2).all { board[it][2] == X }
+                            || (0..1).all { board[1][it] == X }
+                }
+            }
+            2 -> {
+                when (j) {
+                    0 -> return (1..2).all { board[2][it] == X }
+                            || (0..1).all { board[it][0] == X }
+                            || (board[0][2] == X && board[1][1] == X)
+                    1 -> return (0..2).step(2).all { board[2][it] == X }
+                            || (0..1).all { board[it][1] == X }
+                    2 -> return (0..1).all { board[it][it] == X }
+                            || (0..1).all { board[it][2] == X }
+                            || (0..1).all { board[2][it] == X }
+                }
+            }
+        }
         return false
     }
 
